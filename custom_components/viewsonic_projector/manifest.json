@@ -1,0 +1,15 @@
+{
+  "domain": "viewsonic_projector",
+  "name": "ViewSonic Projector",
+  "after_dependencies": ["esphome"],
+  "codeowners": ["@timothyb89"],
+  "config_flow": true,
+  "connectivity": ["serial"],
+  "dependencies": ["usb"],
+  "documentation": "https://github.com/timothyb89/homeassistant-viewsonic-projector",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/timothyb89/homeassistant-viewsonic-projector/issues",
+  "requirements": ["serialx>=1.15.1"],
+  "version": "0.1.0"
+}

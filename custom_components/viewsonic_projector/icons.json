@@ -1,0 +1,93 @@
+{
+  "entity": {
+    "button": {
+      "auto_adjust": { "default": "mdi:auto-fix" },
+      "reset_color_settings": { "default": "mdi:palette-swatch-variant" },
+      "reset_all_settings": { "default": "mdi:restore-alert" },
+      "reset_light_source_hours": { "default": "mdi:timer-refresh-outline" }
+    },
+    "media_player": {
+      "projector": { "default": "mdi:projector" }
+    },
+    "number": {
+      "brightness": { "default": "mdi:brightness-6" },
+      "contrast": { "default": "mdi:contrast-box" },
+      "sharpness": { "default": "mdi:image-filter-center-focus" },
+      "hue": { "default": "mdi:palette" },
+      "saturation": { "default": "mdi:palette" },
+      "gain": { "default": "mdi:palette" },
+      "brilliant_color": { "default": "mdi:creation" },
+      "keystone_vertical": { "default": "mdi:trapezoid" },
+      "keystone_horizontal": { "default": "mdi:trapezoid" },
+      "horizontal_position": { "default": "mdi:arrow-left-right" },
+      "vertical_position": { "default": "mdi:arrow-up-down" },
+      "lens_shift_vertical": { "default": "mdi:arrow-up-down" },
+      "lens_shift_horizontal": { "default": "mdi:arrow-left-right" },
+      "overscan": { "default": "mdi:fit-to-screen-outline" },
+      "red_gain": { "default": "mdi:alpha-r-box" },
+      "green_gain": { "default": "mdi:alpha-g-box" },
+      "blue_gain": { "default": "mdi:alpha-b-box" },
+      "red_offset": { "default": "mdi:alpha-r-box-outline" },
+      "green_offset": { "default": "mdi:alpha-g-box-outline" },
+      "blue_offset": { "default": "mdi:alpha-b-box-outline" }
+    },
+    "remote": {
+      "remote": { "default": "mdi:remote" }
+    },
+    "select": {
+      "color_mode": { "default": "mdi:palette" },
+      "light_source_mode": { "default": "mdi:lightbulb-on-outline" },
+      "aspect_ratio": { "default": "mdi:aspect-ratio" },
+      "color_temperature": { "default": "mdi:thermometer" },
+      "projector_position": { "default": "mdi:projector" },
+      "gamma": { "default": "mdi:gamma" },
+      "hdr": { "default": "mdi:hdr" },
+      "eotf": { "default": "mdi:hdr" },
+      "frame_interpolation": { "default": "mdi:motion-play-outline" },
+      "audio_mode": { "default": "mdi:surround-sound" },
+      "three_d_sync": { "default": "mdi:video-3d" },
+      "hdmi_format": { "default": "mdi:video-input-hdmi" },
+      "hdmi_range": { "default": "mdi:video-input-hdmi" },
+      "primary_color": { "default": "mdi:palette-outline" },
+      "splash_screen": { "default": "mdi:image-outline" },
+      "screen_color": { "default": "mdi:projector-screen-outline" },
+      "language": { "default": "mdi:translate" },
+      "remote_control_code": { "default": "mdi:remote" }
+    },
+    "sensor": {
+      "power_status": {
+        "default": "mdi:power",
+        "state": {
+          "off": "mdi:power-off",
+          "on": "mdi:power-on",
+          "warming_up": "mdi:timer-sand",
+          "cooling_down": "mdi:fan"
+        }
+      },
+      "light_source_hours": { "default": "mdi:lightbulb-on-outline" },
+      "equivalent_light_source_hours": { "default": "mdi:lightbulb-on-outline" },
+      "operating_temperature": { "default": "mdi:thermometer" }
+    },
+    "switch": {
+      "blank": {
+        "default": "mdi:projector-screen-off-outline",
+        "state": { "off": "mdi:projector-screen-outline" }
+      },
+      "freeze": { "default": "mdi:pause-box-outline" },
+      "hdmi_cec": { "default": "mdi:video-input-hdmi" },
+      "quick_auto_search": { "default": "mdi:video-switch-outline" },
+      "high_altitude": { "default": "mdi:image-filter-hdr" },
+      "quick_power_off": { "default": "mdi:power-sleep" },
+      "osd_messages": { "default": "mdi:message-outline" },
+      "three_d_sync_invert": { "default": "mdi:video-3d" },
+      "isf_mode": { "default": "mdi:tune-variant" },
+      "projection_360": { "default": "mdi:rotate-360" },
+      "spdif": { "default": "mdi:optical-audio" }
+    }
+  },
+  "services": {
+    "probe": { "service": "mdi:magnify-scan" },
+    "read": { "service": "mdi:download" },
+    "write": { "service": "mdi:upload" }
+  }
+}

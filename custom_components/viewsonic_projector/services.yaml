@@ -1,0 +1,39 @@
+probe:
+  fields:
+    config_entry_id:
+      required: true
+      selector:
+        config_entry:
+          integration: viewsonic_projector
+
+read:
+  fields:
+    config_entry_id:
+      required: true
+      selector:
+        config_entry:
+          integration: viewsonic_projector
+    code:
+      required: true
+      example: "0x12 0x0B"
+      selector:
+        text:
+
+write:
+  fields:
+    config_entry_id:
+      required: true
+      selector:
+        config_entry:
+          integration: viewsonic_projector
+    code:
+      required: true
+      example: "0x12 0x0B"
+      selector:
+        text:
+    data:
+      required: false
+      default: "0x00"
+      example: "0x04"
+      selector:
+        text:

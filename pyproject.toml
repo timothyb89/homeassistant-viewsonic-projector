@@ -1,0 +1,49 @@
+[project]
+name = "homeassistant-viewsonic-projector"
+version = "0.1.0"
+description = "Home Assistant integration for ViewSonic projectors over RS-232 (incl. ESPHome serial proxies such as the Home Assistant Connect AUX-2)"
+readme = "README.md"
+requires-python = ">=3.14.2"
+license = "Apache-2.0"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "homeassistant==2026.11.2",
+    "pytest-homeassistant-custom-component==0.13.375",
+    "ruff>=0.14",
+    # Requirements of this integration and of the core `usb` component it depends on
+    "serialx==1.15.1",
+    "aiousbwatcher==1.1.2",
+]
+
+[tool.uv]
+package = false
+# The newest pytest-homeassistant-custom-component still pins 2026.10.x; test
+# against the minimum Home Assistant version this integration supports instead.
+override-dependencies = [
+    "homeassistant==2026.11.2",
+    # Pinned to 2026.10 versions by the harness; match Home Assistant 2026.11.
+    "aiohasupervisor==0.8.1",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+# Run as `uv run python -m pytest` so the repository root is importable.
+addopts = "-p tests.ha_bootstrap"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "PL", "PT", "ASYNC"]
+ignore = ["PLR0913", "PLR2004", "PLR0911", "PLR0912", "PLR0915", "RUF012"]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+known-first-party = ["custom_components"]
+combine-as-imports = true

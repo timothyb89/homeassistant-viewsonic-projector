@@ -1,0 +1,471 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "This serial port is already configured",
+      "reconfigure_successful": "Re-configuration was successful"
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "unknown": "Unexpected error"
+    },
+    "step": {
+      "user": {
+        "title": "Connect a ViewSonic projector",
+        "description": "Connect the projector's RS-232 port to a serial port Home Assistant can reach, for example a USB serial adapter or an ESPHome serial proxy such as the Home Assistant Connect AUX-2.",
+        "data": {
+          "device": "Serial port",
+          "baud_rate": "Baud rate",
+          "model": "Model"
+        },
+        "data_description": {
+          "device": "The serial port the projector is connected to.",
+          "baud_rate": "Must match the projector's RS-232 baud rate setting. Most ViewSonic projectors default to 115200.",
+          "model": "Pick your model, or type it in if it is not listed. Known models get a user interface tailored to their inputs and settings."
+        }
+      },
+      "troubleshoot": {
+        "title": "No response from the projector",
+        "description": "The serial port opened, but the projector did not answer a power status query.\n\nCheck that:\n- The projector is plugged in. Some models only answer over RS-232 while switched on, so try again with the projector on.\n- The baud rate matches the projector's setting (115200 by default).\n- The cable is wired correctly. Only RX, TX and ground are used; depending on the adapter you may need a null-modem (crossover) cable or adapter.\n- The correct serial port was selected.\n\nSelect **Submit** to go back and try again."
+      },
+      "reconfigure": {
+        "title": "Reconfigure the projector connection",
+        "data": {
+          "device": "Serial port",
+          "baud_rate": "Baud rate",
+          "model": "Model"
+        },
+        "data_description": {
+          "device": "The serial port the projector is connected to.",
+          "baud_rate": "Must match the projector's RS-232 baud rate setting.",
+          "model": "Pick your model, or type it in if it is not listed."
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Power status interval",
+          "settings_interval": "Settings refresh interval",
+          "sources": "Input sources"
+        },
+        "data_description": {
+          "scan_interval": "How often to ask the projector for its power status.",
+          "settings_interval": "How often to re-read settings (picture, audio, ...) while the projector is on. Settings changed from Home Assistant are read back immediately.",
+          "sources": "Inputs offered by the media player."
+        }
+      }
+    }
+  },
+  "selector": {
+    "source": {
+      "options": {
+        "computer_1": "Computer 1 (D-Sub)",
+        "computer_2": "Computer 2 (D-Sub)",
+        "hdmi_1": "HDMI 1",
+        "hdmi_2": "HDMI 2",
+        "hdmi_3": "HDMI 3",
+        "hdmi_4": "HDMI 4 / MHL",
+        "composite": "Composite video",
+        "s_video": "S-Video",
+        "dvi": "DVI",
+        "component": "Component",
+        "hdbaset": "HDBaseT",
+        "usb_c": "USB-C",
+        "smart_system": "Smart system",
+        "usb_reader": "USB reader",
+        "lan_display": "LAN / Wi-Fi display",
+        "usb_display": "USB display",
+        "usb_2": "USB 2"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "auto_adjust": { "name": "Auto adjust" },
+      "reset_color_settings": { "name": "Reset color settings" },
+      "reset_all_settings": { "name": "Reset all settings" },
+      "reset_light_source_hours": { "name": "Reset light source hours" }
+    },
+    "media_player": {
+      "projector": {
+        "state_attributes": {
+          "source": {
+            "state": {
+              "computer_1": "Computer 1 (D-Sub)",
+              "computer_2": "Computer 2 (D-Sub)",
+              "hdmi_1": "HDMI 1",
+              "hdmi_2": "HDMI 2",
+              "hdmi_3": "HDMI 3",
+              "hdmi_4": "HDMI 4 / MHL",
+              "composite": "Composite video",
+              "s_video": "S-Video",
+              "dvi": "DVI",
+              "component": "Component",
+              "hdbaset": "HDBaseT",
+              "usb_c": "USB-C",
+              "smart_system": "Smart system",
+              "usb_reader": "USB reader",
+              "lan_display": "LAN / Wi-Fi display",
+              "usb_display": "USB display",
+              "usb_2": "USB 2"
+            }
+          }
+        }
+      }
+    },
+    "number": {
+      "brightness": { "name": "Brightness" },
+      "contrast": { "name": "Contrast" },
+      "sharpness": { "name": "Sharpness" },
+      "hue": { "name": "Hue" },
+      "saturation": { "name": "Saturation" },
+      "gain": { "name": "Color gain" },
+      "brilliant_color": { "name": "BrilliantColor" },
+      "keystone_vertical": { "name": "Vertical keystone" },
+      "keystone_horizontal": { "name": "Horizontal keystone" },
+      "horizontal_position": { "name": "Horizontal position" },
+      "vertical_position": { "name": "Vertical position" },
+      "lens_shift_vertical": { "name": "Vertical digital lens shift" },
+      "lens_shift_horizontal": { "name": "Horizontal digital lens shift" },
+      "overscan": { "name": "Overscan" },
+      "red_gain": { "name": "Red gain" },
+      "green_gain": { "name": "Green gain" },
+      "blue_gain": { "name": "Blue gain" },
+      "red_offset": { "name": "Red offset" },
+      "green_offset": { "name": "Green offset" },
+      "blue_offset": { "name": "Blue offset" }
+    },
+    "remote": {
+      "remote": { "name": "Remote" }
+    },
+    "select": {
+      "color_mode": {
+        "name": "Color mode",
+        "state": {
+          "brightest": "Brightest",
+          "movie": "Movie",
+          "standard": "Standard",
+          "srgb": "sRGB / ViewMatch",
+          "dynamic": "Dynamic",
+          "rec709": "Rec. 709",
+          "dicom_sim": "DICOM SIM",
+          "sports": "Sports",
+          "gaming": "Gaming",
+          "photo": "Photo",
+          "presentation": "Presentation",
+          "vivid": "Vivid",
+          "isf_day": "ISF Day",
+          "isf_night": "ISF Night",
+          "user_1": "User 1",
+          "user_2": "User 2",
+          "tv": "TV"
+        }
+      },
+      "light_source_mode": {
+        "name": "Light source mode",
+        "state": {
+          "normal": "Normal",
+          "eco": "Eco",
+          "dynamic_eco": "Dynamic Eco",
+          "super_eco": "SuperEco",
+          "custom_20": "Custom 20%",
+          "custom_40": "Custom 40%",
+          "custom_60": "Custom 60%",
+          "custom_80": "Custom 80%",
+          "custom_100": "Custom 100%",
+          "dynamic_black_1": "Dynamic Black 1",
+          "dynamic_black_2": "Dynamic Black 2"
+        }
+      },
+      "aspect_ratio": {
+        "name": "Aspect ratio",
+        "state": {
+          "auto": "Auto",
+          "4_3": "4:3",
+          "16_9": "16:9",
+          "16_10": "16:10",
+          "anamorphic": "Anamorphic",
+          "wide": "Wide",
+          "2_35_1": "2.35:1",
+          "panorama": "Panorama",
+          "native": "Native",
+          "16_6": "16:6"
+        }
+      },
+      "color_temperature": {
+        "name": "Color temperature",
+        "state": {
+          "warm": "Warm (5500K)",
+          "normal": "Normal (6500K)",
+          "neutral": "Neutral (7500K)",
+          "cool": "Cool (8000K/8500K)",
+          "9300k": "9300K",
+          "9000k": "9000K",
+          "user": "User"
+        }
+      },
+      "projector_position": {
+        "name": "Projector position",
+        "state": {
+          "front_table": "Front table",
+          "rear_table": "Rear table",
+          "rear_ceiling": "Rear ceiling",
+          "front_ceiling": "Front ceiling"
+        }
+      },
+      "gamma": {
+        "name": "Gamma",
+        "state": {
+          "1_8": "1.8",
+          "2_0": "2.0",
+          "2_2": "2.2",
+          "2_35": "2.35",
+          "2_5": "2.5",
+          "srgb": "sRGB",
+          "cubic": "Cubic"
+        }
+      },
+      "hdr": {
+        "name": "HDR",
+        "state": {
+          "auto": "Auto",
+          "sdr": "SDR"
+        }
+      },
+      "eotf": {
+        "name": "HDR EOTF",
+        "state": {
+          "low": "Low",
+          "mid": "Mid",
+          "high": "High"
+        }
+      },
+      "frame_interpolation": {
+        "name": "Frame interpolation",
+        "state": {
+          "low": "Low",
+          "mid": "Mid",
+          "high": "High",
+          "off": "Off"
+        }
+      },
+      "audio_mode": {
+        "name": "Audio mode",
+        "state": {
+          "speech": "Speech",
+          "movie": "Movie",
+          "music": "Music",
+          "user": "User"
+        }
+      },
+      "three_d_sync": {
+        "name": "3D sync",
+        "state": {
+          "off": "Off",
+          "auto": "Auto",
+          "frame_sequential": "Frame sequential",
+          "frame_packing": "Frame packing",
+          "top_bottom": "Top and bottom",
+          "side_by_side": "Side by side"
+        }
+      },
+      "hdmi_format": {
+        "name": "HDMI color format",
+        "state": {
+          "rgb": "RGB",
+          "yuv": "YUV",
+          "auto": "Auto"
+        }
+      },
+      "hdmi_range": {
+        "name": "HDMI range",
+        "state": {
+          "full": "Full / Enhanced (0-255)",
+          "limited": "Limited / Normal (16-235)",
+          "auto": "Auto"
+        }
+      },
+      "primary_color": {
+        "name": "Primary color",
+        "state": {
+          "red": "Red",
+          "green": "Green",
+          "blue": "Blue",
+          "cyan": "Cyan",
+          "magenta": "Magenta",
+          "yellow": "Yellow"
+        }
+      },
+      "splash_screen": {
+        "name": "Splash screen",
+        "state": {
+          "black": "Black",
+          "blue": "Blue",
+          "viewsonic": "ViewSonic",
+          "screen_capture": "Screen capture",
+          "off": "Off"
+        }
+      },
+      "screen_color": {
+        "name": "Screen color",
+        "state": {
+          "off": "Off",
+          "blackboard": "Blackboard",
+          "greenboard": "Greenboard",
+          "whiteboard": "Whiteboard",
+          "blueboard": "Blueboard"
+        }
+      },
+      "language": {
+        "name": "Menu language",
+        "state": {
+          "english": "English",
+          "french": "Français",
+          "german": "Deutsch",
+          "italian": "Italiano",
+          "spanish": "Español",
+          "russian": "Русский",
+          "traditional_chinese": "繁體中文",
+          "simplified_chinese": "简体中文",
+          "japanese": "日本語",
+          "korean": "한국어",
+          "swedish": "Svenska",
+          "dutch": "Nederlands",
+          "turkish": "Türkçe",
+          "czech": "Čeština",
+          "portuguese": "Português",
+          "thai": "ไทย",
+          "polish": "Polski",
+          "finnish": "Suomi",
+          "arabic": "العربية",
+          "indonesian": "Bahasa Indonesia",
+          "hindi": "हिन्दी",
+          "vietnamese": "Tiếng Việt",
+          "greek": "Ελληνικά",
+          "hungarian": "Magyar"
+        }
+      },
+      "remote_control_code": {
+        "name": "Remote control code",
+        "state": {
+          "code_1": "Code 1",
+          "code_2": "Code 2",
+          "code_3": "Code 3",
+          "code_4": "Code 4",
+          "code_5": "Code 5",
+          "code_6": "Code 6",
+          "code_7": "Code 7",
+          "code_8": "Code 8"
+        }
+      }
+    },
+    "sensor": {
+      "power_status": {
+        "name": "Power status",
+        "state": {
+          "off": "Off",
+          "on": "On",
+          "warming_up": "Warming up",
+          "cooling_down": "Cooling down"
+        }
+      },
+      "light_source_hours": { "name": "Light source hours" },
+      "equivalent_light_source_hours": { "name": "Equivalent light source hours" },
+      "operating_temperature": { "name": "Operating temperature" }
+    },
+    "switch": {
+      "blank": { "name": "Blank screen" },
+      "freeze": { "name": "Freeze" },
+      "hdmi_cec": { "name": "HDMI CEC" },
+      "quick_auto_search": { "name": "Auto source" },
+      "high_altitude": { "name": "High altitude mode" },
+      "quick_power_off": { "name": "Quick power off" },
+      "osd_messages": { "name": "On-screen messages" },
+      "three_d_sync_invert": { "name": "3D sync invert" },
+      "isf_mode": { "name": "ISF mode" },
+      "projection_360": { "name": "360° projection" },
+      "spdif": { "name": "S/PDIF output" }
+    }
+  },
+  "exceptions": {
+    "update_failed": {
+      "message": "Error communicating with the projector: {error}"
+    },
+    "not_responding": {
+      "message": "The projector stopped responding"
+    },
+    "not_connected": {
+      "message": "The projector is not connected"
+    },
+    "projector_busy": {
+      "message": "The projector is {state}; wait until it has finished"
+    },
+    "projector_off": {
+      "message": "The projector must be on to change this"
+    },
+    "command_rejected": {
+      "message": "The projector refused the command. The function may not be available on this model or with the current input. ({error})"
+    },
+    "command_failed": {
+      "message": "Failed to send the command to the projector: {error}"
+    },
+    "invalid_source": {
+      "message": "Unknown input source: {source}"
+    },
+    "invalid_remote_command": {
+      "message": "Unknown remote command: {command}. Valid commands: {commands}"
+    },
+    "entry_not_found": {
+      "message": "No ViewSonic projector with config entry ID {entry_id}"
+    },
+    "entry_not_loaded": {
+      "message": "The ViewSonic projector with config entry ID {entry_id} is not loaded"
+    }
+  },
+  "services": {
+    "probe": {
+      "name": "Probe",
+      "description": "Reads every query in the protocol specification and returns the raw results. Use it to find out which functions your model supports; run it with the projector on and an input signal present.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Projector",
+          "description": "The projector to probe."
+        }
+      }
+    },
+    "read": {
+      "name": "Read value",
+      "description": "Sends a read command from the protocol specification and returns the reply.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Projector",
+          "description": "The projector to query."
+        },
+        "code": {
+          "name": "Command",
+          "description": "The cmd2 and cmd3 bytes as hex, for example 0x12 0x0B for the color mode."
+        }
+      }
+    },
+    "write": {
+      "name": "Write value",
+      "description": "Sends a write command from the protocol specification.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Projector",
+          "description": "The projector to send the command to."
+        },
+        "code": {
+          "name": "Command",
+          "description": "The cmd2 and cmd3 bytes as hex, for example 0x12 0x0B for the color mode."
+        },
+        "data": {
+          "name": "Data",
+          "description": "The data byte(s) as hex, for example 0x04."
+        }
+      }
+    }
+  }
+}

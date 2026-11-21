@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ViewSonic documentation and media (vendor copyright; keep local only)
+docs/*.pdf
+docs/*.zip
